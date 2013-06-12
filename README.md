@@ -1,3 +1,5 @@
+# Alpha-End
+
 A new magical number system called "alpha-end" has been designed. This number system is similar to hexadecimal but has
 the following characters: `0 1 2 3 4 5 6 7 8 9 x y z`
 (basically the decimal number system plus the 3 characters x, y and z)
