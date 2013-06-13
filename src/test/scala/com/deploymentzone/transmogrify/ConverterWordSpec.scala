@@ -8,7 +8,7 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPro
 
   "convert when converting decimal to alpha-end encoding" should {
 
-    import com.deploymentzone.transmogrify.Converter._
+    import com.deploymentzone.transmogrify.AlphaEndConverter._
 
     "return '10' when passed 13." in {
       convert(13) should equal("10")

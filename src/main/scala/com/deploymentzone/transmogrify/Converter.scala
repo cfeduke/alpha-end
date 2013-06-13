@@ -1,9 +1,6 @@
 package com.deploymentzone.transmogrify
 
-object Converter {
-
-  val Base13 = 13
-
+trait Converter {
   def convert(number: Int) : String = {
     def repeatedDivision(accumulator: StringBuilder, dividend: Int): String = {
       // converge
@@ -20,16 +17,9 @@ object Converter {
     repeatedDivision(new StringBuilder(), number)
   }
 
-  def radix = Base13
+  def radix: Int
 
-  private val lookup = Array[String]("x", "y", "z")
-  def table(n: Int) =
-    if (n < 10)
-      n.toString()
-    else if (n > radix)
-      throw new ArrayIndexOutOfBoundsException
-    else
-      lookup.apply(n - 10)
+  def table(n: Int) = n.toString()
 
   private class Division(val dividend: Int) {
     val quotient: Int = dividend / radix
