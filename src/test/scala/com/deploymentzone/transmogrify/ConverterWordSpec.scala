@@ -3,8 +3,9 @@ package com.deploymentzone.transmogrify
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.WordSpec
 import com.deploymentzone.transmogrify.Converter._
+import org.scalatest.prop.TableDrivenPropertyChecks
 
-class ConverterWordSpec extends WordSpec with ShouldMatchers {
+class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPropertyChecks {
 
   "convert when converting decimal to alpha-end encoding" should {
 
@@ -22,6 +23,30 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers {
 
     "return '20z1879' when passed 9999999." in {
       convert(9999999) should equal("20z1879")
+    }
+
+    val base13Characters =
+      Table(
+        ("number", "expected"),
+        (0, "0"),
+        (1, "1"),
+        (2, "2"),
+        (3, "3"),
+        (4, "4"),
+        (5, "5"),
+        (6, "6"),
+        (7, "7"),
+        (8, "8"),
+        (9, "9"),
+        (10, "x"),
+        (11, "y"),
+        (12, "z")
+      )
+
+    forAll (base13Characters) { (number: Int, expected: String) =>
+      f"return ${expected} when passed ${number}" in {
+        convert(number) should equal(expected)
+      }
     }
   }
 

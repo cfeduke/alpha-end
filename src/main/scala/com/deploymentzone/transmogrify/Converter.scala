@@ -8,7 +8,7 @@ object Converter {
     def repeatedDivision(accumulator: StringBuilder, dividend: Int): String = {
       // converge
       if (dividend < radix) {
-        accumulator.append(dividend)
+        accumulator.append(table(dividend))
         return accumulator.mkString("").reverse
       }
       // accumulate
