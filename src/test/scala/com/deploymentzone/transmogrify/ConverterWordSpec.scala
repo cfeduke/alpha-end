@@ -81,13 +81,20 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPro
     }
   }
 
-//  "convert when converting decimal to binary encoding" should {
-//
-//    "return '111' when passed 7." in {
-//      convert(7) should equal("111")
-//    }
-//
-//  }
+  "convert when converting decimal to binary encoding" should {
+
+    import com.deploymentzone.transmogrify.BinaryConverter._
+
+    "return '111' when passed 7." in {
+      convert(7) should equal("111")
+    }
+
+    /* signed makes it 31 */
+    f"return '${"1" * 31}' when passed Int.MaxValue." in {
+      convert(Int.MaxValue) should equal("1" * 31)
+    }
+
+  }
 //
 //  "convert when converting decimal to octal encoding" should {
 //
