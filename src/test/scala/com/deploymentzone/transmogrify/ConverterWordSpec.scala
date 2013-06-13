@@ -3,6 +3,7 @@ package com.deploymentzone.transmogrify
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.WordSpec
 import org.scalatest.prop.TableDrivenPropertyChecks
+import com.deploymentzone.transmogrify.AlphaEndConverter._
 
 class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPropertyChecks {
 
@@ -45,6 +46,36 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPro
       )
 
     forAll (base13Characters) { (number: Int, expected: String) =>
+      f"return ${expected} when passed ${number}" in {
+        convert(number) should equal(expected)
+      }
+    }
+
+    /* todo negatives */
+  }
+
+  "convert when converting decimal via identity converter" should {
+
+    import com.deploymentzone.transmogrify.IdentityConverter._
+
+    val base10Characters =
+      Table(
+        ("number", "expected"),
+        (0, "0"),
+        (1, "1"),
+        (2, "2"),
+        (3, "3"),
+        (4, "4"),
+        (5, "5"),
+        (6, "6"),
+        (7, "7"),
+        (8, "8"),
+        (9, "9"),
+        (10, "10"),
+        (Int.MaxValue, Int.MaxValue.toString())
+      )
+
+    forAll (base10Characters) { (number: Int, expected: Any) =>
       f"return ${expected} when passed ${number}" in {
         convert(number) should equal(expected)
       }
