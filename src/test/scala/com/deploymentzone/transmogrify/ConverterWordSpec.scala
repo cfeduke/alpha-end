@@ -20,9 +20,9 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers {
       convert(5006) should equal("2381")
     }
 
-//    "return '20z1879' when passed 9999999." in {
-//      convert(9999999) should equal("20z1879")
-//    }
+    "return '20z1879' when passed 9999999." in {
+      convert(9999999) should equal("20z1879")
+    }
   }
 
 //  "convert when converting decimal to binary encoding" should {
