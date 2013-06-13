@@ -3,7 +3,6 @@ package com.deploymentzone.transmogrify
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.WordSpec
 import org.scalatest.prop.TableDrivenPropertyChecks
-import com.deploymentzone.transmogrify.AlphaEndConverter._
 
 class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPropertyChecks {
 
