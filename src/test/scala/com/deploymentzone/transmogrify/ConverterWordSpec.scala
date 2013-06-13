@@ -15,11 +15,11 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers {
     "return '17' when passed 20." in {
       convert(20) should equal("17")
     }
-//
-//    "return '2381' when passed 5006." in {
-//      convert(5006) should equal("2381")
-//    }
-//
+
+    "return '2381' when passed 5006." in {
+      convert(5006) should equal("2381")
+    }
+
 //    "return '20z1879' when passed 9999999." in {
 //      convert(9999999) should equal("20z1879")
 //    }
