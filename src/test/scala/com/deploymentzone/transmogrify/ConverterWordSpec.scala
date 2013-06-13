@@ -2,12 +2,13 @@ package com.deploymentzone.transmogrify
 
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.WordSpec
-import com.deploymentzone.transmogrify.Converter._
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPropertyChecks {
 
   "convert when converting decimal to alpha-end encoding" should {
+
+    import com.deploymentzone.transmogrify.Converter._
 
     "return '10' when passed 13." in {
       convert(13) should equal("10")
