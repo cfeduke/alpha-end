@@ -95,15 +95,17 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPro
     }
 
   }
-//
-//  "convert when converting decimal to octal encoding" should {
-//
-//    "return '55' when passed 45." in {
-//      convert(45) should equal("55")
-//    }
-//
-//  }
-//
+
+  "convert when converting decimal to octal encoding" should {
+
+    import com.deploymentzone.transmogrify.OctalConverter._
+
+    "return '55' when passed 45." in {
+      convert(45) should equal("55")
+    }
+
+  }
+
 //  "convert when converting decimal to hex encoding" should {
 //
 //    "return '1f' when passed 31." in {
