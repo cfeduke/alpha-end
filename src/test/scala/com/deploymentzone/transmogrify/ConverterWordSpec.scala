@@ -106,10 +106,44 @@ class ConverterWordSpec extends WordSpec with ShouldMatchers with TableDrivenPro
 
   }
 
-//  "convert when converting decimal to hex encoding" should {
-//
-//    "return '1f' when passed 31." in {
-//      convert(31) should equal("1F")
-//    }
-//  }
+  "convert when converting decimal to hex encoding" should {
+
+    import com.deploymentzone.transmogrify.HexConverter._
+
+    "return '1F' when passed 31." in {
+      convert(31) should equal("1F")
+    }
+
+    /* 0x7FFFFFFF */
+    f"return '7FFFFFFF' when passed Int.MaxValue" in {
+      convert(Int.MaxValue) should equal("7FFFFFFF")
+    }
+
+    val base16Characters =
+      Table(
+        ("number", "expected"),
+        (0, "0"),
+        (1, "1"),
+        (2, "2"),
+        (3, "3"),
+        (4, "4"),
+        (5, "5"),
+        (6, "6"),
+        (7, "7"),
+        (8, "8"),
+        (9, "9"),
+        (10, "A"),
+        (11, "B"),
+        (12, "C"),
+        (13, "D"),
+        (14, "E"),
+        (15, "F")
+      )
+
+    forAll (base16Characters) { (number: Int, expected: String) =>
+      f"return ${expected} when passed ${number}" in {
+        convert(number) should equal(expected)
+      }
+    }
+  }
 }
