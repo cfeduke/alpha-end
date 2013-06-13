@@ -80,3 +80,6 @@ class EncodingUnitSpec extends WordSpec with ShouldMatchers {
   }
 }
 ```
+
+## ...
+![Not Kidding](https://raw.github.com/cfeduke/alpha-end/master/src/test/resources/scala_mb_medium.jpg)
