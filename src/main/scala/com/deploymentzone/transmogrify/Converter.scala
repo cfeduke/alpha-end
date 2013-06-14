@@ -1,14 +1,15 @@
 package com.deploymentzone.transmogrify
 
 trait Converter {
-  def convert(number: Int) : String = {
-    def repeatedDivision(accumulator: StringBuilder, dividend: Int): String = dividend match {
-      case _ if dividend < radix =>
-        accumulator.append(table(dividend)).mkString("").reverse
-      case _ =>
-        val (quotient, remainder) = divide(dividend)
-        accumulator.append(table(remainder))
-        repeatedDivision(accumulator, quotient)
+  def convert(number: Int): String = {
+    def repeatedDivision(accumulator: StringBuilder, dividend: Int): String = {
+      divide(dividend) match {
+        case (quotient, remainder) if quotient > 0 =>
+          accumulator.append(table(remainder))
+          repeatedDivision(accumulator, quotient)
+        case (_, remainder) =>
+          accumulator.append(table(dividend)).mkString("").reverse
+      }
     }
 
     repeatedDivision(new StringBuilder(), number)
