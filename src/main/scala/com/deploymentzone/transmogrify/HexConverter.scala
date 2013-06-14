@@ -7,11 +7,10 @@ object HexConverter extends Converter {
   def radix = Base16
 
   private val lookup = Array[String]("A", "B", "C", "D", "E", "F")
-  override def table(n: Int) =
-    if (n < 10)
-      n.toString()
-    else if (n > radix)
-      throw new ArrayIndexOutOfBoundsException
-    else
-      lookup.apply(n - 10)
+  override def table(n: Int) = n match {
+    case x if 0 until 10 contains x => n.toString()
+    case x if 10 until radix contains x => lookup(n - 10)
+    case _ => throw new ArrayIndexOutOfBoundsException
+  }
+
 }
