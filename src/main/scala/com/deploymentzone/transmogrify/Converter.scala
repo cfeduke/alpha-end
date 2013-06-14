@@ -9,9 +9,9 @@ trait Converter {
         return accumulator.mkString("").reverse
       }
       // accumulate
-      val result = new Division(dividend)
-      accumulator.append(table(result.remainder))
-      repeatedDivision(accumulator, result.quotient)
+      val (quotient, remainder) = divide(dividend)
+      accumulator.append(table(remainder))
+      repeatedDivision(accumulator, quotient)
     }
 
     repeatedDivision(new StringBuilder(), number)
@@ -21,8 +21,6 @@ trait Converter {
 
   def table(n: Int) = n.toString()
 
-  private class Division(val dividend: Int) {
-    val quotient: Int = dividend / radix
-    val remainder: Int = dividend % radix
-  }
+  def divide(dividend: Int) = (dividend / radix, dividend % radix)
+
 }
