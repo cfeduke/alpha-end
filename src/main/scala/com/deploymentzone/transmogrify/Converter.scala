@@ -1,7 +1,10 @@
 package com.deploymentzone.transmogrify
 
+import scala.annotation.tailrec
+
 trait Converter {
   def convert(number: Int): String = {
+    @tailrec
     def repeatedDivision(accumulator: StringBuilder, dividend: Int): String = {
       divide(dividend) match {
         case (quotient, remainder) if quotient > 0 =>
